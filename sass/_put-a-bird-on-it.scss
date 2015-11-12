@@ -1,6 +1,22 @@
+/// The fill color of the svg bird
+/// @type Color
+
 $bird-color: #231F20 !default;
+
+/// The width & height of the SVG birs
+/// @type number
 $bird-size: 100px !default;
+
+/// A required prefix for data URLs
+/// @private
+/// @type String
 $_bird-img-prefix: 'data:image/svg+xml;utf8,';
+
+/// The master list of SVG birds
+/// @private
+/// @type Map
+/// @prop {$string} prefix - The part of the SVG before the fill attribute
+/// @prop {$string} sufix - The part of the SVG after the fill attribute
 $_bird-list: (
   barn-swallow: (
     prefix: '<svg xmlns="http://www.w3.org/2000/svg" width="850.391" height="850.39" viewBox="0 0 850.391 850.39"><g fill="',
@@ -41,6 +57,11 @@ $bird-default: nth(map-keys($_bird-list), 1) !default;
   @return $_bird-img-prefix + map-get(map-get($_bird-list, $bird), prefix) + $color + map-get(map-get($_bird-list, $bird), suffix);
 }
 
+/// Output an SVG bird on the parent element
+/// @arg {String} $bird [$bird-default] - The type of bird to output
+/// @arg {Number} $size [$bird-size] - The height and wdth of the bird
+/// @arg {Color} $color [$bird-color] - The fill color of the bird
+/// @output an after pseudo-element with a SVG of a bird and its background image 
 @mixin put-a-bird-on-it (
   $bird: $bird-default,
   $size: $bird-size, 

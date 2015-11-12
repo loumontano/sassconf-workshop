@@ -17,7 +17,7 @@
 }
 
 .scw-header {
-  @include put-a-bird-on-it('junco', 100px, $color--gold) {
+  @include put-a-bird-on-it('parrot', 100px, $color--gold) {
     left: 0;
     top: 0;
   };
